@@ -27,6 +27,7 @@ The person here is probably not technical. They have used AI as a chat window an
   - `scripts/render-html.ts` turns an HTML page into a PNG with Playwright. You can use it for thumbnails, covers and text graphics: `bun scripts/render-html.ts <page.html> <out.png> [9:16|16:9|4:5|1:1]`.
   - `scripts/extract-frames.ts` pulls evenly spaced stills from a video plus a contact sheet. You can use it to "watch" a video: `bun scripts/extract-frames.ts <video> <outDir> [count]`, then look at `contact-sheet.jpg`.
 - Thumbnails, covers and text graphics are HTML + CSS rendered to PNG with Playwright. Never use HyperFrames for still images: it's for video and much slower.
+- Background removal, mattes and cutouts: use `/cutout`. It runs a free local model first (after asking about the one-time download) and only suggests fal.ai if that isn't good enough.
 - Run any text meant for the public (captions, posts, headlines) through `/humanizer`.
 - For design work, use `/impeccable` to avoid the generic AI look.
 - AI image or video generation: fal.ai via `genmedia` if the user set it up (`FAL_KEY` in `.env`). If they didn't, say so and offer other options. Never spend money without asking first.

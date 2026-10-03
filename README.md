@@ -42,6 +42,7 @@ Open a Code tab chat inside the `ai-workspace` folder and type `/` to see the li
 |---|---|
 | `/new-project` | Starts a numbered project folder |
 | `/thumbnail` | Makes a thumbnail from your video |
+| `/cutout` | Removes the background from a photo (for text-behind-head and sticker looks), free and on your Mac |
 | `/prototype` | Builds 3 different versions to flip between, or a clickable test of your rules or flow, inside the project |
 | `/grill-me` | Claude interviews you until the plan is clear, before building anything |
 | `/handoff` | Wraps up a long chat so you can continue fresh in a new one |

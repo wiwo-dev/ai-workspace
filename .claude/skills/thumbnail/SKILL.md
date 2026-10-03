@@ -42,6 +42,7 @@ Write `projects/NN-name/thumbnail.html`:
 - Frame as a full-bleed background: `<img src="frames/frame-03.jpg">` with `object-fit:cover`. Relative paths work.
 - Big, heavy type. One or two words can take an accent colour. Add a soft dark gradient or text shadow behind text so it reads on any frame.
 - Keep text away from the edges and out of the bottom 20% on 9:16 (platform buttons cover it).
+- For text behind the person (the matte effect), get a cutout with `/cutout`, then stack photo, text, cutout.
 - Use a distinctive Google Font via `<link>` rather than Arial or Inter. Use `/impeccable` if you want a design check.
 
 See `projects/00-example/thumbnail.html` for a working example.
