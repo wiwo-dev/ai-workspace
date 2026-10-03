@@ -32,4 +32,4 @@ Every piece of work gets its own numbered folder in `projects/`. This keeps thin
    ```
 5. Tell them where it is and what goes where: "Put your video or photos in `input/` (drag them into the folder in Finder or VS Code). Finished files will land in `output/`." Open the folder for them with `open projects/NN-name`.
 6. Ask for references if they have any: screenshots of styles they like, examples, a voice note. More context gets better results.
-7. Suggest the next step. For a thumbnail, `/thumbnail`. For anything bigger or fuzzy, `/grill-me` so you agree on the plan first.
+7. Suggest the next step. For a thumbnail, `/thumbnail`. To see a few directions before committing, `/prototype` (it creates `prototypes/` inside the project when needed). For anything bigger or fuzzy, `/grill-me` so you agree on the plan first.

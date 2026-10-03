@@ -13,7 +13,7 @@ If the question is about rules or a flow rather than looks, use [LOGIC.md](LOGIC
 
 ## Start from what already exists
 
-A version is easier to judge in its real context: the real photo, the real headline, the real size. If the project already has a design (a `thumbnail.html`, a page, a slide), build the versions **from it**: same content, same frame, same dimensions, different direction. Only invent content when there is nothing to start from, and then use realistic copy, never lorem ipsum.
+A version is easier to judge in its real context: the real photo, the real headline, the real size. If the project already has a design (a `thumbnail.html`, a page, a slide), build the versions **from it**: same content, same frame, same dimensions, different direction. Reuse the project's existing text; don't add new labels, claims or taglines on your own. If there is nothing to start from, use realistic placeholder copy (never lorem ipsum) and tell the user which text you made up.
 
 ## Process
 

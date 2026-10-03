@@ -40,5 +40,5 @@ projects/NN-name/prototypes/<question-slug>/
 4. **Show what changed.** After every click (logic) or every switch (UI), the page makes the current state or the current version obvious.
 5. **Capture the answer when done.** When the user has picked a version or the question is settled:
    - Write `VERDICT.md` next to `index.html`: the question, the answer, which version won (or which bits of which), and why, in a few lines.
-   - Add one line to the project's `README.md` under Notes, linking to the prototype folder.
+   - Add one line to the project's `README.md` under `## Notes` (add that heading if it's missing), linking to the prototype folder.
    - Keep the prototype folder; it's a record the user can reopen. Then do the real thing (for example, build the final `thumbnail.html` from the winning direction).

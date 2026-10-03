@@ -6,7 +6,7 @@ A starter folder for working with Claude as an agent: you give it a folder, and 
 
 ## About
 
-I use this repo in my **AI like a dev** workshops. Most people I meet use AI as a chat window: ask a question, copy the answer, paste it somewhere. Developers work with it differently. The agent sits inside a project folder, runs tools, and writes its own small scripts and skills when a job keeps coming back. The workshop shows that way of working to people who don't write code, and this repo is what they clone at the start. It sets up their Mac, comes with a few skills for content work (thumbnails, captions, design checks, cleaner writing), and gives them a `projects/` folder to keep using after the session.
+I use this repo in my **AI like a dev** workshops. Most people I meet use AI as a chat window: ask a question, copy the answer, paste it somewhere. Developers work with it differently. The agent sits inside a project folder, runs tools, and writes its own small scripts and skills when a job keeps coming back. The workshop shows that way of working to people who don't write code, and this repo is what they clone at the start. It sets up their Mac, comes with a few skills for content work (thumbnails, captions, quick prototypes, design checks, cleaner writing), and gives them a `projects/` folder to keep using after the session.
 
 ## Get started (about 20 minutes, most of it waiting)
 
@@ -29,7 +29,7 @@ Claude checks your Mac, installs what's missing and explains each step. You may 
 
 ## What's inside
 
-- `projects/`: one numbered folder per piece of work. Start one with `/new-project`.
+- `projects/`: one numbered folder per piece of work. Start one with `/new-project`. Inside each: `input/` for your files, `output/` for finished ones, and `prototypes/` for quick test pages made with `/prototype`.
 - `scripts/`: small ready-made tools Claude can use (or adapt): pull frames from a video, turn HTML into an image.
 - `.claude/skills/`: saved how-tos. In the Code tab, type `/` to see them.
 - `CLAUDE.md`: house rules Claude reads every time it works here.
