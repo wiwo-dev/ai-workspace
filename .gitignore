@@ -6,3 +6,6 @@ node_modules/
 projects/*/input/
 projects/*/frames/
 !projects/00-example/frames/
+
+# impeccable downloads the right engine for your computer on first use
+.claude/skills/impeccable/scripts/bin/
