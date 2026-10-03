@@ -1,6 +1,12 @@
+![AI like a dev](.github/banner.jpg)
+
 # ai-workspace
 
-A starter folder for working with Claude as an agent, not just a chat: you give it a folder, it works on real files and builds the small tools it needs. Made for non-developers.
+A starter folder for working with Claude as an agent: you give it a folder, and it works on real files and builds the small tools it needs. Made for non-developers.
+
+## About
+
+I use this repo in my **AI like a dev** workshops. Most people I meet use AI as a chat window: ask a question, copy the answer, paste it somewhere. Developers work with it differently. The agent sits inside a project folder, runs tools, and writes its own small scripts and skills when a job keeps coming back. The workshop shows that way of working to people who don't write code, and this repo is what they clone at the start. It sets up their Mac, comes with a few skills for content work (thumbnails, captions, design checks, cleaner writing), and gives them a `projects/` folder to keep using after the session.
 
 ## Get started (about 20 minutes, most of it waiting)
 
