@@ -4,7 +4,7 @@ A starter folder for working with Claude as an agent, not just a chat. Built for
 
 ## Get started (about 20 minutes, most of it waiting)
 
-1. **Install the Claude app** from https://claude.ai/download and log in.
+1. **Install the Claude app** from https://claude.ai/download and log in. You need a paid Claude plan (Pro or higher) for the Code tab.
 2. **Open the Code tab** and pick your home folder. Paste this:
    > Clone https://github.com/wiwo-dev/ai-intro into ~/ai-intro. If git isn't installed, tell me what to click.
 

@@ -29,6 +29,8 @@ bun scripts/extract-frames.ts "projects/NN-name/input/<clip>" projects/NN-name/f
 
 Open `frames/contact-sheet.jpg` and look at it. Pick the 2–3 frames with a clear subject, a readable face or expression, and room for text. `frames/frames.json` maps each frame to its time. If you need a frame from an exact moment, pull just that one with ffmpeg.
 
+If the script says the clip is HDR (recent iPhones film in HDR by default) and the frames look dull or washed out, convert the clip to normal SDR video first, then extract again. Check the frames before you build on them.
+
 ## 3. Propose before you build
 
 Offer 2–3 options, each a frame + a headline (2–5 words, punchy, no clickbait clichés) + where the text goes. Run headlines through `/humanizer` thinking: no "Unlock", "Game-changer", "Here's why". Let them pick or mix.

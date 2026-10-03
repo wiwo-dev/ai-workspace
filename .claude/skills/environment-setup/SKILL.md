@@ -41,11 +41,12 @@ Run each check first. Skip the step if it passes.
 
 Check: `command -v brew || test -x /opt/homebrew/bin/brew || test -x /usr/local/bin/brew`
 
+If brew exists but `command -v brew` finds nothing, it's installed but not on this shell's PATH. Skip the install and jump to the "make it permanent" lines below, then carry on.
+
 Homebrew's installer needs the Mac password, and you can't type it for them. Use the official macOS installer package so they can click through it:
 
 ```bash
-PKG_URL=$(curl -fsSL https://api.github.com/repos/Homebrew/brew/releases/latest | grep -o 'https://[^"]*\.pkg' | head -1)
-curl -fsSL -o /tmp/Homebrew.pkg "$PKG_URL" && open /tmp/Homebrew.pkg
+curl -fsSL -o /tmp/Homebrew.pkg https://github.com/Homebrew/brew/releases/latest/download/Homebrew.pkg && open /tmp/Homebrew.pkg
 ```
 
 Tell the user: "A Homebrew installer window just opened. Click Continue and Install, type your Mac password when asked, then tell me when it says the installation was successful."
@@ -103,8 +104,8 @@ If yes:
 1. Install the CLI: `curl -fsSL https://genmedia.sh/install | bash`
 2. Tell them to create an account at https://fal.ai, add a few dollars of credit, and create a key at https://fal.ai/dashboard/keys.
 3. Ask them to paste the key. Write it to `.env` as `FAL_KEY=...` (copy `.env.example` if `.env` doesn't exist). Never commit `.env` and never repeat the key back.
-4. Run `genmedia setup --non-interactive --api-key "$FAL_KEY"` (read the key from `.env`).
-5. Check it with a free command: `genmedia pricing bytedance/seedream/v5/pro/text-to-image --json`.
+4. The installer puts genmedia in `~/.genmedia/bin`, which may not be on PATH yet. Use the full path: `~/.genmedia/bin/genmedia setup --non-interactive --api-key "$FAL_KEY"` (read the key from `.env`).
+5. Check it with a free command: `~/.genmedia/bin/genmedia pricing bytedance/seedream/v5/pro/text-to-image --json`.
 
 If no: note it in the report and move on.
 
@@ -119,3 +120,4 @@ Show a short table: each tool, ✅ or ❌, version. For any ❌, one line on wha
 End with what to do next, in plain words:
 - "Open this folder in VS Code: `code .`. You'll see the same files Claude sees."
 - "Start your first project with `/new-project`."
+- If anything was installed, tell them: "Start a new chat (or restart the Claude app) before the next step, so it picks up the new tools."

@@ -1,6 +1,6 @@
 #!/usr/bin/env bun
 // Pulls evenly spaced stills from a video plus one contact sheet, so an agent can "watch" it.
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readdir, rm, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
 function run(cmd: string[]): string {
@@ -11,6 +11,8 @@ function run(cmd: string[]): string {
 
 export async function extractFrames(video: string, outDir: string, count = 12) {
   await mkdir(outDir, { recursive: true });
+  // Clear frames from an earlier run, or the contact sheet would pick them up.
+  for (const f of await readdir(outDir)) if (/^frame-\d+\.jpg$/.test(f)) await rm(join(outDir, f));
   const duration = Number(run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", video]).trim());
   if (!(duration > 0)) throw new Error(`Could not read the length of ${video}`);
 
@@ -28,7 +30,10 @@ export async function extractFrames(video: string, outDir: string, count = 12) {
   const sheet = join(outDir, "contact-sheet.jpg");
   run(["ffmpeg", "-y", "-v", "error", "-i", join(outDir, "frame-%02d.jpg"),
     "-vf", `scale=360:-2,tile=${cols}x${rows}:padding=8:color=white`, "-frames:v", "1", "-q:v", "3", sheet]);
-  return { frames, sheet };
+  // HLG / PQ footage (recent iPhones record HLG by default) turns dull and grey when saved as plain JPEG.
+  const transfer = run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=color_transfer", "-of", "csv=p=0", video]).trim();
+  const hdr = transfer === "arib-std-b67" || transfer === "smpte2084";
+  return { frames, sheet, hdr };
 }
 
 if (import.meta.main) {
@@ -37,6 +42,7 @@ if (import.meta.main) {
     console.error("Usage: bun scripts/extract-frames.ts <video> <outDir> [count=12]");
     process.exit(1);
   }
-  const { frames, sheet } = await extractFrames(video, outDir, Number(count));
+  const { frames, sheet, hdr } = await extractFrames(video, outDir, Number(count));
   console.log(`Saved ${frames.length} frames and ${sheet}`);
+  if (hdr) console.log("Note: this is an HDR video. If the frames look dull or washed out, convert the clip to SDR first and extract again.");
 }
