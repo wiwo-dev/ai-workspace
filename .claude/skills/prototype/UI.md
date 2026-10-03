@@ -31,7 +31,7 @@ Use `/impeccable`'s guidance so none of them look like generic AI output.
 
 ### 3. One file, all versions
 
-Put every version in `index.html`, each in its own block (`<section data-variant="A">` …), with only the current one visible. Fixed-size designs (thumbnails, covers, slides) render at their real size, scaled down to fit the window if needed, so proportions stay true.
+Put every version in `index.html`, each in its own block (`<section data-variant="A">` …), with only the current one visible. Fixed-size designs (thumbnails, covers, slides) render at their real size, scaled down to fit the window if needed, so proportions stay true. For 9:16 covers, add a `G` key that toggles the platform crop lines and safe zone from `/thumbnail` (Sizes and safe zones), so every version can be judged as it will look on the Instagram grid.
 
 ### 4. The switcher bar
 

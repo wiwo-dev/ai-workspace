@@ -33,3 +33,16 @@ test("renders at exact size and loads sibling files via file://", async () => {
   expect([w, h]).toEqual([540, 960]);
   expect([r, g, b]).toEqual([255, 0, 0]);
 }, 60_000);
+
+test("guides draw the Instagram crop lines on a 9:16 render, and are off by default", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "render guides "));
+  await writeFile(join(dir, "page.html"), `<body style="margin:0;background:rgb(0,0,0)"></body>`);
+  const plain = join(dir, "plain.png");
+  const guided = join(dir, "guided.png");
+  await renderHtml(join(dir, "page.html"), plain, 1080, 1920);
+  await renderHtml(join(dir, "page.html"), guided, 1080, 1920, { guides: true });
+  // 3:4 profile-grid crop line at y=240, centre of the frame stays untouched
+  expect((await pixelAt(plain, 540, 240)).slice(2)).toEqual([0, 0, 0]);
+  expect((await pixelAt(guided, 540, 240)).slice(2)).not.toEqual([0, 0, 0]);
+  expect((await pixelAt(guided, 540, 960)).slice(2)).toEqual([0, 0, 0]);
+}, 60_000);

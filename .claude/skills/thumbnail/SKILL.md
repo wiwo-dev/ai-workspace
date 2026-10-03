@@ -15,7 +15,7 @@ Work inside a project folder (`projects/NN-name/`). If there isn't one, run `/ne
 
 Ask only what you don't know:
 - Which video or photo? (Usually in `input/`.)
-- Where will it be posted? Default 9:16 (Reels, TikTok, Shorts). 16:9 for YouTube, 4:5 for an Instagram grid post.
+- Where will it be posted? Default 9:16 (Reels, TikTok, Shorts). 16:9 for YouTube, 4:5 or 3:4 for an Instagram feed post. See the sizes and safe zones below: a Reel cover is 9:16 but gets cropped on the profile grid.
 - What's the video about, in one sentence? Any words that must be on it?
 - Any style they like? A screenshot in `input/` is worth a paragraph.
 
@@ -41,11 +41,30 @@ Write `projects/NN-name/thumbnail.html`:
 - `<body>` exactly the target size (1080×1920 for 9:16, 1280×720 for 16:9, 1080×1350 for 4:5), `margin:0`, `overflow:hidden`.
 - Frame as a full-bleed background: `<img src="frames/frame-03.jpg">` with `object-fit:cover`. Relative paths work.
 - Big, heavy type. One or two words can take an accent colour. Add a soft dark gradient or text shadow behind text so it reads on any frame.
-- Keep text away from the edges and out of the bottom 20% on 9:16 (platform buttons cover it).
+- Keep the face and all text inside the safe zone for the platform (below). On a 9:16 Reel cover that's roughly y 285 to 1536, with about 80px clear on each side.
 - For text behind the person (the matte effect), get a cutout with `/cutout`, then stack photo, text, cutout.
 - Use a distinctive Google Font via `<link>` rather than Arial or Inter. Use `/impeccable` if you want a design check.
 
 See `projects/00-example/thumbnail.html` for a working example.
+
+## Sizes and safe zones
+
+Checked online on 2026-10-03. Platforms change these, so if something looks off, search for the current numbers and update this table.
+
+| Where | Canvas | What gets cut or covered |
+|---|---|---|
+| Instagram Reel cover | 1080×1920 (9:16) | **Profile grid** shows only the centred 3:4 (1080×1440): about 240px cut from the top and the bottom. **Home feed** shows it at 4:5 (1080×1350): about 285px cut from each end. **Full screen**, the caption and buttons cover the bottom ~20% and the right edge. |
+| TikTok / YouTube Shorts | 1080×1920 (9:16) | Caption, username and buttons cover the bottom ~20% and the right edge. |
+| Instagram feed post | 1080×1350 (4:5) or 1080×1440 (3:4) | The grid shows 3:4, so a 4:5 post loses a little on the left and right there. |
+| YouTube | 1280×720 (16:9) | The video length badge covers the bottom-right corner. |
+
+For a Reel cover, the only area that survives the grid, the feed and full screen is the **centred block from y 285 to about 1536**. Put the face and every word there. The rest can hold background that's nice to have but not needed.
+
+Check it: render once with `--guides` (9:16 only). It draws the grid crop (magenta), the feed crop (cyan, dashed) and the full-screen caption area (shaded) over the design. Look at that version, but never ship it: the real PNG is rendered without `--guides`.
+
+```bash
+bun scripts/render-html.ts projects/NN-name/thumbnail.html /tmp/thumbnail-guides.png 9:16 --guides
+```
 
 ## 5. Render and show
 
@@ -56,7 +75,7 @@ bun scripts/render-html.ts projects/NN-name/thumbnail.html projects/NN-name/outp
 open projects/NN-name/output/thumbnail.png
 ```
 
-Look at the PNG yourself before showing it: check the font loaded, nothing is cut off, and the text reads.
+Look at the PNG yourself before showing it: check the font loaded, nothing is cut off, the text reads, and (for a 9:16 cover) the guides render shows everything important inside the safe zone. Tell the user in one line how it will look on the grid.
 
 ## 6. Iterate
 

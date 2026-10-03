@@ -24,7 +24,7 @@ The person here is probably not technical. They have used AI as a chat window an
 - Use pnpm, never npm (`pnpm add`, `pnpm dlx`). It's faster and saves disk space.
 - Write scripts in TypeScript and run them with Bun (`bun scripts/x.ts`). Use Python with uv (`uv run`) when a task needs Python libraries, typically heavy image or video work.
 - `scripts/` has ready-made tools. Before using one, check it does exactly what this task needs. If it doesn't, adapt it or write a new one inside the project folder (and tell the user why).
-  - `scripts/render-html.ts` turns an HTML page into a PNG with Playwright. You can use it for thumbnails, covers and text graphics: `bun scripts/render-html.ts <page.html> <out.png> [9:16|16:9|4:5|1:1]`.
+  - `scripts/render-html.ts` turns an HTML page into a PNG with Playwright. You can use it for thumbnails, covers and text graphics: `bun scripts/render-html.ts <page.html> <out.png> [9:16|16:9|4:5|1:1] [--guides]`. `--guides` draws the Instagram crop lines on a 9:16 render for checking.
   - `scripts/extract-frames.ts` pulls evenly spaced stills from a video plus a contact sheet. You can use it to "watch" a video: `bun scripts/extract-frames.ts <video> <outDir> [count]`, then look at `contact-sheet.jpg`.
 - Thumbnails, covers and text graphics are HTML + CSS rendered to PNG with Playwright. Never use HyperFrames for still images: it's for video and much slower.
 - Background removal, mattes and cutouts: use `/cutout`. It runs a free local model first (after asking about the one-time download) and only suggests fal.ai if that isn't good enough.
