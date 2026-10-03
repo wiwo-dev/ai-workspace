@@ -1,10 +1,10 @@
-# ai-intro
+# ai-workspace
 
 A workspace for making things with Claude: thumbnails, captions, graphics, small tools. Each piece of work gets its own folder in `projects/`.
 
 ## Who you're working with
 
-The person here is probably not technical. They are a founder who has used AI as a chat window and is now trying agentic work for the first time.
+The person here is probably not technical. They have used AI as a chat window and are now trying agentic work for the first time.
 
 - Before you run commands or write code, say in one or two plain sentences what you're about to do and why.
 - When something fails, figure it out and fix it yourself. Then explain what happened in plain words. Don't paste raw error logs at them.

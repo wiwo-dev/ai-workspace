@@ -1,28 +1,36 @@
-# ai-intro
+# ai-workspace
 
-A starter folder for working with Claude as an agent, not just a chat. Built for the Foundera AI session.
+A starter folder for working with Claude as an agent, not just a chat: you give it a folder, it works on real files and builds the small tools it needs. Made for non-developers.
 
 ## Get started (about 20 minutes, most of it waiting)
 
+You don't need a GitHub account or any developer experience.
+
 1. **Install the Claude app** from https://claude.ai/download and log in. You need a paid Claude plan (Pro or higher) for the Code tab.
-2. **Open the Code tab** and pick your home folder. Paste this:
-   > Clone https://github.com/wiwo-dev/ai-intro into ~/ai-intro. If git isn't installed, tell me what to click.
+2. **Open the Code tab** and choose your home folder as the folder to work in.
+3. **Copy this whole message, paste it into the chat, and send it:**
 
-   (If your Mac asks to install "command line developer tools", say yes, then ask Claude to try again.)
-3. **Switch the Code tab to the `ai-intro` folder** and type:
-   > /environment-setup
+```
+Hi! I'm setting up for a workshop about working with AI agents. I'm not a developer, so please explain things simply as you go, and when you need me to do something, tell me exactly where to look and what to click.
 
-   Claude checks your Mac and installs what's missing. It'll explain each step. You may need to type your Mac password once.
-4. **Bring a short video** (10–30 seconds, vertical) to the session.
+1. Download the workshop folder from https://github.com/wiwo-dev/ai-workspace. I'd like it in my home folder as ~/ai-workspace. Explain in a sentence why that's a good place, and check with me before putting it somewhere else.
+   If git isn't installed yet, my Mac will offer to install "command line developer tools". Tell me to click Install (not "Get Xcode"), and try again once it's done.
+2. Open ~/ai-workspace/.claude/skills/environment-setup/SKILL.md and follow it step by step to set up my Mac.
+3. When everything is ready, tell me how to start a new chat in the Code tab inside the ai-workspace folder, so I can use it from now on.
+```
+
+Claude checks your Mac, installs what's missing and explains each step. You may need to type your Mac password once.
 
 ## What's inside
 
 - `projects/`: one numbered folder per piece of work. Start one with `/new-project`.
 - `scripts/`: small ready-made tools Claude can use (or adapt): pull frames from a video, turn HTML into an image.
-- `.claude/skills/`: saved how-tos. Type `/` in Claude to see them.
+- `.claude/skills/`: saved how-tos. In the Code tab, type `/` to see them.
 - `CLAUDE.md`: house rules Claude reads every time it works here.
 
 ## Skills to try
+
+Open a Code tab chat inside the `ai-workspace` folder and type `/` to see the list.
 
 | Skill | What it does |
 |---|---|
@@ -34,7 +42,8 @@ A starter folder for working with Claude as an agent, not just a chat. Built for
 | `/impeccable` | Design guidance that avoids the generic AI look |
 | `/hyperframes` | Video: captions, motion graphics, edits |
 | `/genmedia` | AI images and video through fal.ai (optional) |
+| `/environment-setup` | Checks your Mac's tools again and fixes anything missing |
 
 ## Getting updates
 
-Ask Claude: "pull the latest ai-intro updates". Your `projects/` folder is yours and won't be touched.
+Ask Claude: "pull the latest ai-workspace updates". Your `projects/` folder is yours and won't be touched.

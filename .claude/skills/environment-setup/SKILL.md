@@ -14,6 +14,7 @@ The user is probably not technical. Assume they have never used a terminal.
 - Start by telling them, in two or three sentences, what's about to happen: you'll check their Mac for a handful of free tools and install the missing ones, it takes 10–20 minutes, and they may need to type their Mac password once.
 - Before each install, give one plain sentence on what the tool is for (see the table). No more.
 - **When something fails, don't stop and don't hand them the error.** Read it, work out the cause, fix it, try again. Search the web if you need to. Only ask the user when you truly need them (a password, clicking an installer, a decision), and then tell them exactly what to click or type.
+- Whenever they need to do something outside this chat (click an installer, open an app, copy a key), say exactly where to look and what to click. Never assume they know where a window or menu is.
 - Keep updates short. They'll be watching.
 
 ## This is written for macOS
@@ -37,6 +38,8 @@ If the user is on Windows or Linux, don't follow the commands below. Work out th
 
 Run each check first. Skip the step if it passes.
 
+Run every command from the ai-workspace folder (the one that contains this skill's `.claude` folder, usually `~/ai-workspace`). This chat may have been started in another folder, such as their home folder; that's fine, just run the commands from there.
+
 ### 1. Homebrew
 
 Check: `command -v brew || test -x /opt/homebrew/bin/brew || test -x /usr/local/bin/brew`
@@ -49,7 +52,7 @@ Homebrew's installer needs the Mac password, and you can't type it for them. Use
 curl -fsSL -o /tmp/Homebrew.pkg https://github.com/Homebrew/brew/releases/latest/download/Homebrew.pkg && open /tmp/Homebrew.pkg
 ```
 
-Tell the user: "A Homebrew installer window just opened. Click Continue and Install, type your Mac password when asked, then tell me when it says the installation was successful."
+Tell the user: "A Homebrew installer window just opened. If you don't see it, it may be behind this window: look for the installer icon in the Dock at the bottom of your screen. Click Continue and Install, type your Mac password when asked, then tell me when it says the installation was successful."
 
 After they confirm:
 - Your shell won't know about brew yet. Use the full path: `/opt/homebrew/bin/brew` on Apple Silicon, `/usr/local/bin/brew` on Intel.
@@ -61,7 +64,11 @@ After they confirm:
   ```
 - In every later command in this session, run `eval "$(<brew path> shellenv)"` first if `brew` isn't found.
 
-If the `.pkg` route fails, fall back to asking them to open the Terminal app and paste the one-line install command from https://brew.sh, then come back.
+If the `.pkg` route fails, fall back to the Terminal app. Walk them through it step by step:
+1. "Press Cmd + Space, type Terminal, and press Enter. A window with a text prompt opens."
+2. Give them the current one-line install command from https://brew.sh to copy, and tell them to paste it into that window and press Enter.
+3. "It will ask for your Mac password. When you type it, nothing appears on screen, not even dots. That's normal. Type it and press Enter."
+4. "When it finishes, come back here and tell me." Then continue with the steps after the install.
 
 ### 2. Command-line tools
 
@@ -102,22 +109,26 @@ Ask, don't assume: "Do you want to set up AI image and video generation? I recom
 
 If yes:
 1. Install the CLI: `curl -fsSL https://genmedia.sh/install | bash`
-2. Tell them to create an account at https://fal.ai, add a few dollars of credit, and create a key at https://fal.ai/dashboard/keys.
-3. Ask them to paste the key. Write it to `.env` as `FAL_KEY=...` (copy `.env.example` if `.env` doesn't exist). Never commit `.env` and never repeat the key back.
-4. The installer puts genmedia in `~/.genmedia/bin`, which may not be on PATH yet. Use the full path: `~/.genmedia/bin/genmedia setup --non-interactive --api-key "$FAL_KEY"` (read the key from `.env`).
-5. Check it with a free command: `~/.genmedia/bin/genmedia pricing bytedance/seedream/v5/pro/text-to-image --json`.
+2. Tell them to create an account at https://fal.ai and add a few dollars of credit.
+3. Explain the key: "fal gives you an API key. It's like a private password that lets me use your fal account. Keep it to yourself." Then: "Go to https://fal.ai/dashboard/keys, click to create a new key, copy it, and paste it here."
+4. When they paste the key, write it to `.env` as `FAL_KEY=...` (copy `.env.example` if `.env` doesn't exist). Never commit `.env` and never repeat the key back.
+5. The installer puts genmedia in `~/.genmedia/bin`, which may not be on PATH yet. Use the full path: `~/.genmedia/bin/genmedia setup --non-interactive --api-key "$FAL_KEY"` (read the key from `.env`).
+6. Check it with a free command: `~/.genmedia/bin/genmedia pricing bytedance/seedream/v5/pro/text-to-image --json`.
 
 If no: note it in the report and move on.
 
 ### 6. Git identity
 
-Check `git config --global user.name` and `user.email`. If either is empty, ask for their name and email and set them. Explain: git labels every saved version with a name.
+Check `git config --global user.name` and `user.email`. If either is empty, ask for their name and email and set them. Explain: git labels every saved version of a project with a name and email. This stays on their Mac; it isn't an account and nothing gets sent anywhere.
 
 ## Finish
 
 Show a short table: each tool, ✅ or ❌, version. For any ❌, one line on what's wrong and what you'll try next (and then try it).
 
-End with what to do next, in plain words:
-- "Open this folder in VS Code: `code .`. You'll see the same files Claude sees."
-- "Start your first project with `/new-project`."
-- If anything was installed, tell them: "Start a new chat (or restart the Claude app) before the next step, so it picks up the new tools."
+Then open the folder in VS Code for them: run `code ~/ai-workspace` (or `open -a "Visual Studio Code" ~/ai-workspace`). Tell them: "VS Code just opened with your ai-workspace folder. The list on the left shows the same files I work with, so you can watch what I create."
+
+End with what to do next, in plain words. They will not know what a command or a skill is, so spell it out:
+
+- "From now on, work inside the ai-workspace folder. Start a new chat in the Code tab and choose the ai-workspace folder in your home folder as the folder to work in. That way Claude knows about the tools and skills in it, and the new tools we just installed are picked up too."
+- "In that new chat, type a forward slash: / . A list of commands appears. These are skills, saved how-tos for Claude. Pick new-project (or keep typing new-project and press Enter) to start your first project."
+- If this chat already runs inside the ai-workspace folder and nothing was installed, skip the new-chat part and just explain the / list.
