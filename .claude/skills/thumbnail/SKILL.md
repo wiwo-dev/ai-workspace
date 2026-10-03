@@ -33,7 +33,7 @@ If the script says the clip is HDR (recent iPhones film in HDR by default) and t
 
 ## 3. Propose before you build
 
-Offer 2–3 options, each a frame + a headline (2–5 words, punchy, no clickbait clichés) + where the text goes. Run headlines through `/humanizer` thinking: no "Unlock", "Game-changer", "Here's why". Let them pick or mix.
+If they want to see the directions side by side before choosing, use `/prototype` (UI branch) to build them as one flip-through page inside the project. Otherwise, offer 2–3 options, each a frame + a headline (2–5 words, punchy, no clickbait clichés) + where the text goes. Run headlines through `/humanizer` thinking: no "Unlock", "Game-changer", "Here's why". Let them pick or mix.
 
 ## 4. Build the HTML
 

@@ -14,7 +14,8 @@ The person here is probably not technical. They have used AI as a chat window an
 ## How this folder is organised
 
 - `projects/NN-short-name/` holds one piece of work each (`01-first-thumbnail`, `02-launch-video`). Use `/new-project` to start one.
-- Inside a project: `input/` for their files (videos, photos), `frames/` for stills pulled from video, `output/` for finished files, `README.md` for the brief, notes and references.
+- Inside a project: `input/` for their files (videos, photos), `frames/` for stills pulled from video, `output/` for finished files, `prototypes/` for quick throwaway test pages (`/prototype`), `README.md` for the brief, notes and references.
+- Never create work in the workspace root. If something doesn't belong to a project yet, start one with `/new-project`.
 - `scripts/` holds reusable tools shared by every project.
 - `.claude/skills/` holds skills (saved how-tos). Type `/` in Claude to see them.
 
