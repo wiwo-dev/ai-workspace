@@ -21,11 +21,16 @@ Hi! I'm setting up for a workshop about working with AI agents. I'm not a develo
 
 1. Download the workshop folder from https://github.com/wiwo-dev/ai-workspace. I'd like it in my home folder as ~/ai-workspace. Explain in a sentence why that's a good place, and check with me before putting it somewhere else.
    If git isn't installed yet, my Mac will offer to install "command line developer tools". Tell me to click Install (not "Get Xcode"), and try again once it's done.
-2. Open ~/ai-workspace/.claude/skills/environment-setup/SKILL.md and follow it step by step to set up my Mac.
-3. When everything is ready, tell me how to start a new chat in the Code tab inside the ai-workspace folder, so I can use it from now on.
+2. Before installing anything, read ~/ai-workspace/.claude/skills/environment-setup/SKILL.md and any scripts it uses. I want to be careful about what goes on my Mac, so tell me in a few short points:
+   - what it will install and where each thing comes from
+   - what else it changes on my Mac
+   - anything that looks unusual or risky for a workspace I'll keep using after the workshop
+   Then wait for me to say "go".
+3. Follow that file step by step to set up my Mac.
+4. When everything is ready, tell me how to start a new chat in the Code tab inside the ai-workspace folder, so I can use it from now on.
 ```
 
-Claude checks your Mac, installs what's missing and explains each step. You may need to type your Mac password once.
+Claude first shows you what it plans to install and waits for your "go". Then it checks your Mac, installs what's missing and explains each step. You may need to type your Mac password once.
 
 ## What's inside
 
